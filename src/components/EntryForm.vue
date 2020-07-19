@@ -1,22 +1,22 @@
 <template>
   <section>
-    <h1>Add Entry</h1>
     <b-field label="Amount">
       <b-input
         v-model="entry.amount"
         placeholder="Numeral"
-        v-cleave="masks.numeral">
+        v-cleave="masks.numeral"
+        required
+      >
       </b-input>
     </b-field>
 
     <b-field label="Description">
-      <b-input type="textarea" v-model="entry.description"></b-input>
+      <b-input type="textarea" v-model="entry.description" required></b-input>
     </b-field>
 
-
-    <b-button class="is-info is-pulled-right" @click="saveEntry" expanded>Save</b-button>
-  
-    
+    <b-button class="is-info is-pulled-right" @click="saveEntry" expanded
+      >Save</b-button
+    >
   </section>
 </template>
 
@@ -24,36 +24,36 @@
 import Cleave from "cleave.js";
 
 const cleave = {
-  name: 'cleave',
+  name: "cleave",
   bind(el, binding) {
-    const input = el.querySelector('input');
+    const input = el.querySelector("input");
     input._vCleave = new Cleave(input, binding.value);
   },
   unbind(el) {
-    const input = el.querySelector('input');
+    const input = el.querySelector("input");
     input._vCleave.destroy();
-  }
-}
+  },
+};
 
 export default {
   name: "EntryForm",
   directives: { cleave },
-  
+
   data() {
     return {
       entry: {
         amount: "",
-        description: ""
+        description: "",
       },
-  
+
       masks: {
         numeral: {
           numeral: true,
-          numeralThousandsGroupStyle: 'thousand',
-          prefix: '₱ '
+          numeralThousandsGroupStyle: "thousand",
+          prefix: "₱ ",
         },
       },
-    }
+    };
   },
 
   methods: {
@@ -63,5 +63,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

@@ -1041,7 +1041,7 @@
     webpack "^4.0.0"
     yorkie "^2.0.0"
 
-"@vue/cli-plugin-router@^4.4.6":
+"@vue/cli-plugin-router@^4.4.6", "@vue/cli-plugin-router@~4.4.0":
   version "4.4.6"
   resolved "https://registry.npm.taobao.org/@vue/cli-plugin-router/download/@vue/cli-plugin-router-4.4.6.tgz#db5bb1c92afd2046376e4faa90270d6363d4b9b8"
   integrity sha1-21uxySr9IEY3bk+qkCcNY2PUubg=
@@ -1154,6 +1154,11 @@
   version "1.2.0"
   resolved "https://registry.npm.taobao.org/@vue/web-component-wrapper/download/@vue/web-component-wrapper-1.2.0.tgz#bb0e46f1585a7e289b4ee6067dcc5a6ae62f1dd1"
   integrity sha1-uw5G8VhafiibTuYGfcxaauYvHdE=
+
+"@vuejs-community/vue-filter-date-format@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npm.taobao.org/@vuejs-community/vue-filter-date-format/download/@vuejs-community/vue-filter-date-format-1.4.0.tgz#514b0c775045945b81a5caa3a04ce6fd17182008"
+  integrity sha1-UUsMd1BFlFuBpcqjoEzm/RcYIAg=
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -1859,6 +1864,13 @@ browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.8.5:
     escalade "^3.0.1"
     node-releases "^1.1.58"
 
+buefy@^0.8.20:
+  version "0.8.20"
+  resolved "https://registry.npm.taobao.org/buefy/download/buefy-0.8.20.tgz#75708800548220654575903d031a81fc8575b7f3"
+  integrity sha1-dXCIAFSCIGVFdZA9AxqB/IV1t/M=
+  dependencies:
+    bulma "0.7.5"
+
 buffer-from@^1.0.0:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/buffer-from/download/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
@@ -1892,6 +1904,11 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npm.taobao.org/builtin-status-codes/download/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
+
+bulma@0.7.5:
+  version "0.7.5"
+  resolved "https://registry.npm.taobao.org/bulma/download/bulma-0.7.5.tgz#35066c37f82c088b68f94450be758fc00a967208"
+  integrity sha1-NQZsN/gsCIto+URQvnWPwAqWcgg=
 
 bytes@3.0.0:
   version "3.0.0"
@@ -2168,6 +2185,11 @@ clean-stack@^2.0.0:
   version "2.2.0"
   resolved "https://registry.npm.taobao.org/clean-stack/download/clean-stack-2.2.0.tgz?cache=0&sync_timestamp=1592035445087&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fclean-stack%2Fdownload%2Fclean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
   integrity sha1-7oRy27Ep5yezHooQpCfe6d/kAIs=
+
+cleave.js@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.npm.taobao.org/cleave.js/download/cleave.js-1.6.0.tgz#0e4e011943bdd70c67c9dcf4ff800ce710529171"
+  integrity sha1-Dk4BGUO91wxnydz0/4AM5xBSkXE=
 
 cli-cursor@^2.1.0:
   version "2.1.0"
@@ -7856,6 +7878,11 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-router@^3.3.4:
+  version "3.3.4"
+  resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.3.4.tgz?cache=0&sync_timestamp=1594111718735&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-router%2Fdownload%2Fvue-router-3.3.4.tgz#4e38abc34a11c41b6c3d8244449a2e363ba6250b"
+  integrity sha1-Tjirw0oRxBtsPYJERJouNjumJQs=
+
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npm.taobao.org/vue-style-loader/download/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"
@@ -7876,6 +7903,11 @@ vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
+
+vue2-filters@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.npm.taobao.org/vue2-filters/download/vue2-filters-0.11.0.tgz#32fff5a95e55159a93d6fecbaf69b58f0e056e99"
+  integrity sha1-Mv/1qV5VFZqT1v7Lr2m1jw4Fbpk=
 
 vue@^2.6.11:
   version "2.6.11"
