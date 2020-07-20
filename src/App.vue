@@ -7,7 +7,15 @@
 
 <script>
 import Header from "@/components/Header";
+import { EventBus } from "./event-bus.js";
+
 export default {
+  mounted() {
+    EventBus.$on("entry:add", (entry) => {
+      console.log("entry add: ", entry);
+      this.entries = [...this.entries, entry];
+    });
+  },
   components: {
     Header,
   },

@@ -1,5 +1,15 @@
 <template>
   <section>
+    <div class="block">
+      <b-field label="Type" />
+      <b-radio v-model="entry.type" native-value="debit">
+        Debit
+      </b-radio>
+      <b-radio v-model="entry.type" native-value="credit">
+        Credit
+      </b-radio>
+    </div>
+
     <b-field label="Amount">
       <b-input
         v-model="entry.amount"
@@ -14,14 +24,15 @@
       <b-input type="textarea" v-model="entry.description" required></b-input>
     </b-field>
 
-    <b-button class="is-info is-pulled-right" @click="saveEntry" expanded
-      >Save</b-button
-    >
+    <b-button class="is-info is-pulled-right" @click="saveEntry" expanded>
+      Save
+    </b-button>
   </section>
 </template>
 
 <script>
 import Cleave from "cleave.js";
+import { EventBus } from "../event-bus.js";
 
 const cleave = {
   name: "cleave",
@@ -38,10 +49,10 @@ const cleave = {
 export default {
   name: "EntryForm",
   directives: { cleave },
-
   data() {
     return {
       entry: {
+        type: "debit",
         amount: "",
         description: "",
       },
@@ -58,7 +69,13 @@ export default {
 
   methods: {
     saveEntry() {
-      console.log("saved entry!");
+      EventBus.$emit("entry:add", {
+        ...this.entry,
+        amount: this.entry.amount.substr(2),
+        id: 6,
+        new_balance: 50000,
+        date: "2020-07-20",
+      });
     },
   },
 };
