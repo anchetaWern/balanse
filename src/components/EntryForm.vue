@@ -71,11 +71,16 @@ export default {
     saveEntry() {
       EventBus.$emit("entry:add", {
         ...this.entry,
-        amount: this.entry.amount.substr(2),
-        id: 6,
-        new_balance: 50000,
-        date: "2020-07-20",
+        amount: parseInt(this.entry.amount.substr(2).replace(",", "")),
       });
+
+      this.entry = {
+        type: "debit",
+        amount: "",
+        description: "",
+      };
+
+      this.$router.push("/");
     },
   },
 };

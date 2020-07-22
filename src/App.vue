@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :key="$route.fullPath" />
+    <Header :key="$route.fullPath" :balance="balance" />
     <router-view :entries="entries" />
   </div>
 </template>
@@ -9,55 +9,56 @@
 import Header from "@/components/Header";
 import { EventBus } from "./event-bus.js";
 
+import firebase from "@/firebaseConfig";
+const db = firebase.firestore();
+
 export default {
   mounted() {
+    db.collection("entries").onSnapshot(
+      (docSnapshot) => {
+        const documents = docSnapshot.docs.map((doc) => doc.data());
+
+        this.entries = documents.sort((a, b) => (a.date > b.date ? 1 : -1));
+        this.balance = parseInt(
+          this.entries[this.entries.length - 1].new_balance
+        );
+      },
+      (err) => {
+        console.log("err: ", err);
+      }
+    );
+
     EventBus.$on("entry:add", (entry) => {
-      console.log("entry add: ", entry);
-      this.entries = [...this.entries, entry];
+      const new_balance =
+        entry.type == "credit"
+          ? this.balance + entry.amount
+          : this.balance - entry.amount;
+
+      db.collection("entries")
+        .add({
+          amount: entry.amount,
+          type: entry.type,
+          description: entry.description,
+          new_balance: new_balance,
+          date: new Date().getTime(),
+        })
+        .then(() => {
+          console.log("document successfully written...");
+        })
+        .catch((error) => {
+          console.log("error writing document: ", error);
+        });
     });
   },
+
   components: {
     Header,
   },
+
   data() {
     return {
-      entries: [
-        {
-          id: 1,
-          amount: 20000,
-          type: "credit",
-          description: "For tuitions",
-          new_balance: 20000,
-          date: "2020-06-30",
-        },
-
-        {
-          id: 2,
-          amount: 10000,
-          type: "debit",
-          description: "Siomai king",
-          new_balance: 10000,
-          date: "2020-07-09",
-        },
-
-        {
-          id: 3,
-          amount: 50000,
-          type: "credit",
-          description: "For pagibig",
-          new_balance: 60000,
-          date: "2020-07-10",
-        },
-
-        {
-          id: 4,
-          amount: 5000,
-          type: "debit",
-          description: "Groceries",
-          new_balance: 55000,
-          date: "2020-07-15",
-        },
-      ],
+      balance: 0,
+      entries: [],
     };
   },
 };
