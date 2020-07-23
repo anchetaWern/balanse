@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Entries from "../views/Entries.vue";
 import AddEntry from "../views/AddEntry.vue";
+import Login from "../views/Login.vue";
 
 import Vue2Filters from "vue2-filters";
 import { Table, Field, Input, Button, Radio } from "buefy";
@@ -19,6 +20,11 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
+    name: "Login",
+    component: Login,
+  },
+  {
+    path: "/entries",
     name: "Entries",
     component: Entries,
   },

@@ -24,7 +24,7 @@
       <b-input type="textarea" v-model="entry.description" required></b-input>
     </b-field>
 
-    <b-button class="is-info is-pulled-right" @click="saveEntry" expanded>
+    <b-button class="is-info" @click="saveEntry" expanded>
       Save
     </b-button>
   </section>
@@ -80,7 +80,7 @@ export default {
         description: "",
       };
 
-      this.$router.push("/");
+      this.$router.push("/entries");
     },
   },
 };

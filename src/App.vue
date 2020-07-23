@@ -1,12 +1,10 @@
 <template>
   <div id="app">
-    <Header :key="$route.fullPath" :balance="balance" />
-    <router-view :entries="entries" />
+    <router-view :entries="entries" :balance="balance" />
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header";
 import { EventBus } from "./event-bus.js";
 
 import firebase from "@/firebaseConfig";
@@ -14,19 +12,27 @@ const db = firebase.firestore();
 
 export default {
   mounted() {
-    db.collection("entries").onSnapshot(
-      (docSnapshot) => {
-        const documents = docSnapshot.docs.map((doc) => doc.data());
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        if (this.$router.currentRoute.name != "Entries") {
+          this.$router.push("/entries");
+        }
 
-        this.entries = documents.sort((a, b) => (a.date > b.date ? 1 : -1));
-        this.balance = parseInt(
-          this.entries[this.entries.length - 1].new_balance
+        db.collection("entries").onSnapshot(
+          (docSnapshot) => {
+            const documents = docSnapshot.docs.map((doc) => doc.data());
+
+            this.entries = documents.sort((a, b) => (a.date > b.date ? 1 : -1));
+            this.balance = parseInt(
+              this.entries[this.entries.length - 1].new_balance
+            );
+          },
+          (err) => {
+            console.log("err: ", err);
+          }
         );
-      },
-      (err) => {
-        console.log("err: ", err);
       }
-    );
+    });
 
     EventBus.$on("entry:add", (entry) => {
       const new_balance =
@@ -49,10 +55,6 @@ export default {
           console.log("error writing document: ", error);
         });
     });
-  },
-
-  components: {
-    Header,
   },
 
   data() {

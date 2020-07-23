@@ -55,7 +55,7 @@ export default {
       this.$router.push("/entry/new");
     },
     goToEntries() {
-      this.$router.push("/");
+      this.$router.push("/entries");
     },
   },
 };
