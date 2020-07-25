@@ -37,10 +37,15 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.user.email, this.user.password)
         .then(() => {
+          this.user = {
+            email: "",
+            password: "",
+          };
           this.$router.push("/entries");
         })
         .catch(() => {
           alert("Incorrect credentials. Please try again.");
+          this.user.password = "";
         });
     },
   },
