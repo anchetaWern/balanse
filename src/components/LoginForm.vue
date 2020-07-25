@@ -14,6 +14,12 @@
       <b-button class="is-info" @click="login" expanded>
         Login
       </b-button>
+
+      <b-loading
+        :is-full-page="true"
+        :active.sync="isLoading"
+        :can-cancel="false"
+      ></b-loading>
     </div>
   </section>
 </template>
@@ -25,6 +31,7 @@ export default {
   name: "LoginForm",
   data() {
     return {
+      isLoading: false,
       user: {
         email: "",
         password: "",
@@ -33,6 +40,7 @@ export default {
   },
   methods: {
     login() {
+      this.isLoading = true;
       firebase
         .auth()
         .signInWithEmailAndPassword(this.user.email, this.user.password)
@@ -41,11 +49,13 @@ export default {
             email: "",
             password: "",
           };
+          this.isLoading = false;
           this.$router.push("/entries");
         })
         .catch(() => {
           alert("Incorrect credentials. Please try again.");
           this.user.password = "";
+          this.isLoading = false;
         });
     },
   },

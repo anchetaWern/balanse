@@ -5,7 +5,7 @@ import AddEntry from "../views/AddEntry.vue";
 import Login from "../views/Login.vue";
 
 import Vue2Filters from "vue2-filters";
-import { Table, Field, Input, Button, Radio } from "buefy";
+import { Table, Field, Input, Button, Radio, Loading } from "buefy";
 import "buefy/dist/buefy.css";
 
 Vue.use(Table);
@@ -13,6 +13,7 @@ Vue.use(Field);
 Vue.use(Input);
 Vue.use(Button);
 Vue.use(Radio);
+Vue.use(Loading);
 Vue.use(Vue2Filters);
 
 Vue.use(VueRouter);
