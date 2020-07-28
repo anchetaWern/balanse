@@ -33,6 +33,7 @@
 <script>
 import Cleave from "cleave.js";
 import { EventBus } from "../event-bus.js";
+import firebase from "@/firebaseConfig";
 
 const cleave = {
   name: "cleave",
@@ -49,8 +50,16 @@ const cleave = {
 export default {
   name: "EntryForm",
   directives: { cleave },
+  mounted() {
+    const user = firebase.auth().currentUser;
+
+    this.user_id = user.uid;
+    this.entry.type =
+      this.user_id.substr(0, 5) === "ON9P4" ? "credit" : "debit";
+  },
   data() {
     return {
+      user_id: null,
       entry: {
         type: "debit",
         amount: "",
