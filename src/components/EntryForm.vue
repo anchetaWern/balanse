@@ -24,6 +24,16 @@
       <b-input type="textarea" v-model="entry.description" required></b-input>
     </b-field>
 
+    <b-field>
+      <b-datepicker
+        ref="datepicker"
+        v-model="entry.date"
+        expanded
+        placeholder="Select a date"
+      >
+      </b-datepicker>
+    </b-field>
+
     <b-button class="is-info" @click="saveEntry" expanded>
       Save
     </b-button>
@@ -64,6 +74,7 @@ export default {
         type: "debit",
         amount: "",
         description: "",
+        date: new Date(),
       },
 
       masks: {

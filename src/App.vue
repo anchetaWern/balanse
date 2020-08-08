@@ -46,7 +46,7 @@ export default {
           type: entry.type,
           description: entry.description,
           new_balance: new_balance,
-          date: new Date().getTime(),
+          date: entry.date.getTime(),
         })
         .then(() => {
           console.log("document successfully written...");
